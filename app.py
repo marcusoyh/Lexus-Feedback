@@ -61,7 +61,7 @@ def submit():
 
         if db.session.query(Feedback).filter(Feedback.customer == customer).count() == 0:
             # customer doesnt exist, which is what we want
-            data = Feedback(customer, dealer, rating, comments)
+            data = Feedback(customer, dealer, rating, comments,startDate,endDate)
             db.session.add(data)
             db.session.commit()
 
