@@ -44,6 +44,13 @@ class Feedback(db.Model):
 def index():
     return render_template('index.html')
 
+@app.route('/viewAllSubmissions')
+def viewAllSubmissions():
+    results = Feedback.query.order_by(Feedback.startDate).all()
+    for r in results:
+        print(r.customer)
+    return render_template('viewAllSubmissions.html',results = results)
+
 
 @app.route('/submit', methods=['POST'])
 def submit():
@@ -65,12 +72,14 @@ def submit():
             db.session.add(data)
             db.session.commit()
 
-            # Printing all Results
-            #results = Feedback.query.order_by(Feedback.startDate).all()
-            print("NUMBER OF ENTRIES IN DATABASE:")
+            # Printing all Results for Testing
+            # results = Feedback.query.order_by(Feedback.startDate).all()
+            # print("ALL ENTRIES IN DATABASE:")
+            # for r in results:
+            #     print(r.customer)
+            # print("NUMBER OF ENTRIES IN DATABASE:")
             totalCount = db.session.query(Feedback).count()
-            #results = db.session.query(Feedback)
-            print(totalCount)
+            # print(totalCount)
 
             # Sending mail
             send_mail(customer, dealer, rating, comments,
