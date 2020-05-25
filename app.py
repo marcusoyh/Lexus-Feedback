@@ -28,12 +28,16 @@ class Feedback(db.Model):
     dealer = db.Column(db.String(200))
     rating = db.Column(db.Integer)
     comments = db.Column(db.Text())
+    startDate = db.Column(db.Date)
+    endDate = db.Column(db.Date)
 
-    def __init__(self, customer, dealer, rating, comments):
+    def __init__(self, customer, dealer, rating, comments, startDate,endDate):
         self.customer = customer
         self.dealer = dealer
         self.rating = rating
         self.comments = comments
+        self.startDate = startDate
+        self.endDate = endDate
 
 
 @app.route('/')
@@ -62,7 +66,7 @@ def submit():
             db.session.commit()
 
             # Printing all Results
-            #results = db.session.query(Feedback).order_By(Feedback.startDate).all()
+            results = Feedback.query.order_by(Feedback.startDate).all()
             print("NUMBER OF ENTRIES IN DATABASE:")
             totalCount = db.session.query(Feedback).count()
             #results = db.session.query(Feedback)
@@ -70,7 +74,7 @@ def submit():
 
             # Sending mail
             send_mail(customer, dealer, rating, comments,
-                      startDate, endDate, totalCount)
+                      startDate, endDate, totalCount,results)
             return render_template('success.html')
         # this is to be rendered if the user has submitted before
         return render_template('index.html', message='You have already submitted feedback')
