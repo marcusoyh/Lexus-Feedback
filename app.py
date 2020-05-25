@@ -46,6 +46,8 @@ def submit():
         dealer = request.form['dealer'] 
         rating = request.form['rating'] 
         comments = request.form['comments'] 
+        startDate = request.form['startDate']
+        endDate = request.form['endDate']
 
         if customer=='' or dealer=='':
             return render_template('index.html', message='Please enter required fields')
@@ -56,7 +58,7 @@ def submit():
             data = Feedback(customer,dealer,rating,comments)
             db.session.add(data)
             db.session.commit()
-            send_mail(customer,dealer,rating,comments)
+            send_mail(customer,dealer,rating,comments,startDate,endDate)
             return render_template('success.html')
         return render_template('index.html', message='You have already submitted feedback') #this is to be rendered if the user has submitted before
 
