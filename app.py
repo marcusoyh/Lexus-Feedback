@@ -74,7 +74,7 @@ def submit():
 
             # Sending mail
             send_mail(customer, dealer, rating, comments,
-                      startDate, endDate, totalCount,results)
+                      startDate, endDate, totalCount)
             return render_template('success.html')
         # this is to be rendered if the user has submitted before
         return render_template('index.html', message='You have already submitted feedback')
