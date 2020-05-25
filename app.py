@@ -27,7 +27,7 @@ class Feedback(db.Model):
     customer = db.Column(db.String(200), unique=True)
     dealer = db.Column(db.String(200))
     rating = db.Column(db.Integer)
-    comments = db.Column(db.Text())
+    comment = db.Column(db.Text())
     startDate = db.Column(db.Date)
     endDate = db.Column(db.Date)
 
