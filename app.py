@@ -55,12 +55,15 @@ def submit():
         
         if db.session.query(Feedback).filter(Feedback.customer == customer).count() ==0:
             #Printing all Results
+            print("NUMBER OF ENTRIES IN DATABASE:")
+            totalCount = db.session.query(Feedback).count()
+            print(totalCount)
 
             #customer doesnt exist, which is what we want
             data = Feedback(customer,dealer,rating,comments)
             db.session.add(data)
             db.session.commit()
-            send_mail(customer,dealer,rating,comments,startDate,endDate)
+            send_mail(customer,dealer,rating,comments,startDate,endDate,totalCount)
             return render_template('success.html')
         return render_template('index.html', message='You have already submitted feedback') #this is to be rendered if the user has submitted before
 
