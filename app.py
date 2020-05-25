@@ -66,7 +66,7 @@ def submit():
             db.session.commit()
 
             # Printing all Results
-            results = Feedback.query.order_by(Feedback.startDate).all()
+            #results = Feedback.query.order_by(Feedback.startDate).all()
             print("NUMBER OF ENTRIES IN DATABASE:")
             totalCount = db.session.query(Feedback).count()
             #results = db.session.query(Feedback)
