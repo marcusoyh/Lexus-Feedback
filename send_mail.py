@@ -46,9 +46,10 @@ def send_mail(customer, dealer, rating, comments, startDate, endDate, totalCount
             text = message.as_string()
             server.sendmail(sender_address, receiver_address, text)
             server.close()
+            print('Email Sent!')
     except Exception as err:
         print(err)
 
 
-    print('Email Sent!')
+  
 
