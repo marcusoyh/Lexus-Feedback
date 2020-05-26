@@ -15,8 +15,7 @@ if ENV == 'dev':
 else:
     # production database, on heroku
     app.debug = False
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://vikreukcaobgwl:6012a2f81ea5562933832a577933dcbd51d33acf55c7d31b5256549c751abf97@ec2-54-86-170-8.compute-1.amazonaws.com:5432/d2t6eugi9tjt5o'
-
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://eqpgmipbnbctbx:eaa2b6e030384682412748a515b502b46408a5b44b81379e2a72733c7aff5336@ec2-52-87-135-240.compute-1.amazonaws.com:5432/d9f1r39g59rkp6'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
