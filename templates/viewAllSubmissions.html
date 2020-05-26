@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+<link rel="stylesheet" href="../static/styles.css" />
 
 <head>
     <meta charset="UTF-8" />
@@ -16,7 +17,9 @@
             <thead>
                 <tr>
                     <th scope="col">Customer Name</th>
-                    <th scope="col"> Rental Start Date</th>
+                    <th scope="col">Rental Start Date</th>
+                    <th scope="col">Rental End Date</th>
+                    <th scope="col">Customer Comments</th>
                 </tr>
             </thead>
 
@@ -25,6 +28,8 @@
                 <tr>
                     <td>{{ result.customer}} </td>
                     <td>{{ result.startDate}} </td>
+                    <td>{{ result.endDate}} </td>
+                    <td>{{ result.comments}} </td>
                 </tr>
 
                 {% endfor %}
