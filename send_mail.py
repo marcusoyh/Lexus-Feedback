@@ -19,10 +19,10 @@ def send_mail(customer, dealer, rating, comments, startDate, endDate, totalCount
     # msg['From'] = sender_email
     # msg['To'] = receiver_email
 
-    # Sending email
-    with smtplib.SMTP(smtp_server, port) as server:
-        server.login(login, password)
-        server.sendmail(sender_email, receiver_email, msg.as_string())
+    # # Sending email
+    # with smtplib.SMTP(smtp_server, port) as server:
+    #     server.login(login, password)
+    #     server.sendmail(sender_email, receiver_email, msg.as_string())
 
     # Testing with gmail
     mail_content = f"<h3>New Feedback Submission</h3><ul><li>Customer:{customer}</li><li>Start Date:{startDate}</li><li>End Date:{endDate}</li><li>Dealer:{dealer}</li><li>Rating:{rating}</li><li>Comments:{comments}</li><li>Total Count:{totalCount}</li></ul>"
